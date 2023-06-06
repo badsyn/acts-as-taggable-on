@@ -271,10 +271,11 @@ module ActsAsTaggableOn::Taggable
           new_tags = tags - current_tags
         end
 
+        # Disabled because it destroys the new tags too
         # Destroy old taggings:
-        if old_tags.present?
-          taggings.not_owned.by_context(context).where(tag_id: old_tags).destroy_all
-        end
+        # if old_tags.present?
+        #   taggings.not_owned.by_context(context).where(tag_id: old_tags).destroy_all
+        # end
 
         # Create new taggings:
         new_tags.each do |tag|
